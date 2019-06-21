@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 13:01:34 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/20 21:01:07 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/21 21:03:20 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 typedef struct	s_flags_struct
 {
-	char	flag[10];
-	void	(*flag_func[10])(const char *format, int index);
+	char	flag[11];
+	void	(*flag_func[11])(const char *format, int index, va_list ap);
 }				t_flags_struct;
 
 t_flags_struct	get_struct_var();

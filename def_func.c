@@ -6,29 +6,56 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 14:19:51 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/20 21:24:05 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/21 22:02:35 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void			c_flag(const char *format, int i)
+int				count_width(const char *format, int *i)
 {
-	printf("   --c_flag works--   ");
+	int width;
+	
+	width = 0;
+	while (format[*i] >= '0' && format[*i] <= '9')
+	{
+		width = (width * 10) + format[*i] - 48;
+		(*i)++;
+	}
+	return (width);
 }
 
-void			d_flag(const char *format, int i)
+void			pourc_flag(const char *format, int i, va_list ap)
 {
-	printf("--d_flag works--");
+	write(1, &format[i], 1);
+}
+
+void			c_flag(const char *format, int i, va_list ap)
+{
+	char	c;
+	int		width;
+
+	width = 0;
+	c = va_arg(ap, int);
+	if (format[i] == '-' && (format[i + 1] >= '1' && format[i + 1] <= '9'))
+	{
+		i++;
+		width = count_width(format, &i);
+	}
+}	
+
+void			d_flag(const char *format, int i, va_list ap)
+{
+	write(1, " -test-D- ", 10);
 }
 
 const t_flags_struct g_struct_var =
 {
-	{ "cd" },
-	{ &c_flag, &d_flag }
+	{ "%cd" },
+	{ &pourc_flag, &c_flag, &d_flag }
 };
 
 t_flags_struct	get_struct_var(void)
 {
-	return (struct_var);
+	return (g_struct_var);
 }
