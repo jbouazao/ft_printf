@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 14:19:51 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/22 13:25:48 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/22 14:29:53 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,7 @@ void			print_spaces(int width)
 
 int				count_width(const char *format, int *i)
 {
-	int width;
-	
-	width = 0;
-	while (format[*i] >= '0' && format[*i] <= '9' && width < 2147483647)
-	{
-		width = (width * 10) + format[*i] - 48;
-		(*i)++;
-	}
-	return (width);
+	return (ft_atoi(&format[*i]));
 }
 
 void			pourc_flag(const char *format, int *i, va_list ap)
@@ -43,22 +35,26 @@ void			pourc_flag(const char *format, int *i, va_list ap)
 	(*i)++;
 }
 
-void			c_flag(const char *format, int *i, va_list ap)
+void			c_flag(const char *frm, int *i, va_list ap)
 {
 	char	c;
-	int		width;
 	int		it;
 
-	width = 0;
 	it = 0;
 	c = va_arg(ap, int);
-	if (format[*i] == '-' && (format[(*i) + 1] >= '1' && format[(*i) + 1] <= '9'))
+	if (frm[*i] == '-' && (frm[(*i) + 1] >= '1' && frm[(*i) + 1] <= '9'))
 	{
 		write(1, &c, 1);
 		(*i)++;
-		width = count_width(format, i);
-		print_spaces(width);
+		print_spaces(ft_atoi(&frm[*i]));
 	}
+	else if (frm[*i] >= '1' && frm[*i] <= '9')
+	{
+		print_spaces(ft_atoi(&frm[*i]));
+		write(1, &c, 1);
+	}
+	else
+		write(1, &c, 1);
 }
 
 void			d_flag(const char *format, int *i, va_list ap)
