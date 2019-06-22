@@ -6,11 +6,11 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 14:19:51 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/22 15:54:12 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/22 16:26:35 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 void			print_spaces(int width)
 {
