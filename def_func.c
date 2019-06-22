@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 14:19:51 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/22 14:29:53 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/22 15:54:12 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ void			print_spaces(int width)
 		write(1, " ", 1);
 		i++;
 	}
-}
-
-int				count_width(const char *format, int *i)
-{
-	return (ft_atoi(&format[*i]));
 }
 
 void			pourc_flag(const char *format, int *i, va_list ap)
