@@ -57,11 +57,11 @@ int		ft_printf(const char *format, ...)
 	va_end(ap);
 	return(1);
 }
-int main()
-{
-		int a = 3;
-		int *p = &a;
+// int main()
+// {
+// 		int a = 3;
+// 		int *p = &a;
 
-		ft_printf("|%-5.0s|", "hello");
-		printf("\n|%-5.0s|", "hello");
-}
+// 		ft_printf("|%-10.3s|", NULL);
+// 		printf("\n|%-10.3s|", NULL);
+// }

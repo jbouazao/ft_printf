@@ -33,7 +33,7 @@ void			perc_flag(const char *format, int *i, va_list ap)
 const t_flags_struct g_struct_var =
 {
 	{ "%cs" },
-	{ &pourc_flag, &c_flag, &s_flag }
+	{ &perc_flag, &c_flag, &s_flag }
 };
 
 t_flags_struct	get_struct_var(void)

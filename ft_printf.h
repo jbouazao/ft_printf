@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 13:01:34 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/23 11:54:18 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/23 13:01:09 by yjouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include "./libft/libft.h"
+
+typedef	struct	s_to_c
+{
+	char	flag;
+	int		width;
+	int		pr;
+}				t_to_c;
 
 typedef struct	s_flags_struct
 {
