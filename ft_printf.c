@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 15:46:25 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/22 14:40:25 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/23 11:28:55 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		det_flag(const char *format, int *i, va_list ap)
 	while (format[*i])
 	{
 		it = 0;
-		while (it < 2)
+		while (it < 3)
 		{
 			if (struct_tobe_man.flag[it] == format[*i])
 			{
@@ -59,5 +59,9 @@ int		ft_printf(const char *format, ...)
 }
 int main()
 {
-	ft_printf("|%-2c||%2c||%c|", '1', '2', 1000000000000);
+		int a = 3;
+		int *p = &a;
+
+		ft_printf("|%-5.0s|", "hello");
+		printf("\n|%-5.0s|", "hello");
 }
