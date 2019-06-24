@@ -6,7 +6,7 @@
 /*   By: yjouaoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 10:10:25 by yjouaoud          #+#    #+#             */
-/*   Updated: 2019/06/24 10:10:28 by yjouaoud         ###   ########.fr       */
+/*   Updated: 2019/06/24 10:37:17 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static	void			ft_putstr_s(char const *s, int pr)
 		}
 }
 
-static	void			s_flags_m(t_s_conv pram, char *s)
+static	void			s_conv_m(t_s_conv pram, char *s)
 {
 	if (pram.flag == '-')
 	{
@@ -54,7 +54,7 @@ static	void			s_flags_m(t_s_conv pram, char *s)
 	}
 }
 
-static	void			s_flags_p(t_s_conv pram, char *s)
+static	void			s_conv_p(t_s_conv pram, char *s)
 {
 	if (pram.flag == '+')
 	{
@@ -83,7 +83,7 @@ static	void			s_flags_p(t_s_conv pram, char *s)
 	s_flags_m(pram, s);
 }
 
-void					s_flag(const char *frm, int *i, va_list ap)
+void					s_conv(const char *frm, int *i, va_list ap)
 {
 	char		*s;
 	t_s_conv	pram;

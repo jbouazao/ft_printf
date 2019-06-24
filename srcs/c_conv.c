@@ -6,13 +6,13 @@
 /*   By: yjouaoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 10:09:51 by yjouaoud          #+#    #+#             */
-/*   Updated: 2019/06/24 10:09:53 by yjouaoud         ###   ########.fr       */
+/*   Updated: 2019/06/24 10:35:50 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void					c_flag(const char *frm, int *i, va_list ap)
+void					c_conv(const char *frm, int *i, va_list ap)
 {
 	char	c;
 	int		it;
