@@ -6,7 +6,7 @@
 /*   By: yjouaoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 10:10:25 by yjouaoud          #+#    #+#             */
-/*   Updated: 2019/06/24 10:37:17 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/24 10:45:45 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static	void			s_conv_p(t_s_conv pram, char *s)
 			ft_putstr_s(s, pram.pr);
 		}
 	}
-	s_flags_m(pram, s);
+	s_conv_m(pram, s);
 }
 
 void					s_conv(const char *frm, int *i, va_list ap)
@@ -108,6 +108,6 @@ void					s_conv(const char *frm, int *i, va_list ap)
 		pram.pr = ft_atoi(&frm[(*i + 1)]);
 	else
 		pram.pr = -1;
-	s_flags_p(pram, str);
+	s_conv_p(pram, str);
 	free(str);
 }
