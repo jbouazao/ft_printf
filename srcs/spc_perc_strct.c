@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 11:42:52 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/24 10:47:30 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/24 11:23:10 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void			print_spaces(int width)
 
 void			perc_conv(const char *format, int *i, va_list ap)
 {
+	(void)ap;
 	write(1, &format[*i], 1);
 	(*i)++;
 }
