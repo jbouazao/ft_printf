@@ -57,11 +57,15 @@ int		ft_printf(const char *format, ...)
 	va_end(ap);
 	return(1);
 }
-// int main()
-// {
-// 		int a = 3;
-// 		int *p = &a;
-
-// 		ft_printf("|%-10.3s|", NULL);
-// 		printf("\n|%-10.3s|", NULL);
-// }
+int main()
+{
+	
+		ft_printf("%c",'f');
+		 ft_printf("|%s|%-s|%23s|%.5s|%.50s|%-23s|%-.5s|%-.50s|%23.5s|%23.50s|%-23.5s|%-23.50s|",NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+		 printf("\n");
+		 printf("|%s|%-s|%23s|%.5s|%.50s|%-23s|%-.5s|%-.50s|%23.5s|%23.50s|%-23.5s|%-23.50s|",NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+		 printf("\n");
+		 ft_printf("|%s|%-s|%23s|%.5s|%.50s|%-23s|%-.5s|%-.50s|%23.5s|%23.50s|%-23.5s|%-23.50s|","xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84");
+		 printf("\n");
+		 printf("|%s|%-s|%23s|%.5s|%.50s|%-23s|%-.5s|%-.50s|%23.5s|%23.50s|%-23.5s|%-23.50s|","xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84", "xF0x9Fx98x84");
+}

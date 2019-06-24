@@ -17,12 +17,12 @@
 # include <stdio.h>
 # include "./libft/libft.h"
 
-typedef	struct	s_to_c
+typedef	struct	s_s_conv
 {
 	char	flag;
 	int		width;
 	int		pr;
-}				t_to_c;
+}				t_s_conv;
 
 typedef struct	s_flags_struct
 {
@@ -35,6 +35,7 @@ void			print_spaces(int width);
 void			perc_flag(const char *format, int *i, va_list ap);
 void			c_flag(const char *frm, int *i, va_list ap);
 void			s_flag(const char *format, int *i, va_list ap);
-void			p_flag(const char *format, int*i, va_list ap);
+void			p_flag(const char *format, int *i, va_list ap);
+void			d_flag(const char *format, int *i, va_list ap);
 
 #endif
