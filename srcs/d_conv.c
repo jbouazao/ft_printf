@@ -12,33 +12,49 @@
 
 #include "../ft_printf.h"
 
-static void		*check_h_l(const char *frm, int *i, va_list ap, int flag)
+static t_sh_lg		*check_h_l(const char *frm, int *i, va_list ap)
 {
-	int					index;
-	long long int		lld;
-	long int			ld;
-	int					d;
+	int	index;
+	t_sh_lg	*d;
 
 	index = *i;
-	d = 0;
 	while (frm[index + 1] != 'd')
 		index++;
+	d = init_d();
+	if (frm[index] == 'h')
+	{
+		if (frm[index - 1] == 'h')
+			d->hhd = 1;
+		else if (frm[index] == 'h' && frm[index - 1] != 'h')
+			d->hd = 1;
+	}
 	if (frm[index] == 'l')
 	{
 		if (frm[index - 1] == 'l')
-			lld = va_arg(ap, long long int);
+			d->lld = 1
 		else if (frm[index] == 'l' && frm[index - 1] != 'l')
-			ld = va_arg(ap, long int);
+			d->ld = 1;
 	}
 	else
-		d = va_arg(ap, int);
+		d->d = 1;
+	return (d);
 }
 
 void			d_conv(const char *frm, int *i, va_list ap, int *ret)
 {
 	int		flag;
+	t_sh_lg		*d;
 
 	flag = 0;
-	d = check_h_l(frm, i, ap, flag);
-	printf("%d", 5);
+	d = check_h_l(frm, i, ap);
+	if (d->d == 1)
+		d->d = va_arg(ap, int);
+	else if (d->hd == 1)
+		d->hd = (short int)(va_arg(ap, int);
+	else if (d->hhd == 1)
+		d->hhd = (short short int)va_arg(ap, int);
+	else if (d->ld == 1)
+		d->ld = va_arg(ap, long int);
+	else if (d->lld == 1)
+		d->lld = va_arg(ap, long long int);
 }

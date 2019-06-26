@@ -17,6 +17,15 @@
 # include <stdio.h>
 # include "./libft/libft.h"
 
+typedef struct	s_sh_lg
+{
+	int	d;
+	long int	ld;
+	long long int	lld;
+	short int 	hd;
+	short short int	hhd;
+}		t_sh_lg;
+
 typedef	struct	s_s_conv
 {
 	char	flag;
@@ -36,5 +45,6 @@ void			perc_conv(const char *frm, int *i, va_list ap, int *ret);
 void			c_conv(const char *frm, int *i, va_list ap, int *ret);
 void			s_conv(const char *format, int *i, va_list ap, int *ret);
 void			p_conv(const char *format, int *i, va_list ap, int *ret);
+t_sh_lg			init_d();
 
 #endif

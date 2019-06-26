@@ -44,3 +44,18 @@ t_flags_struct	get_struct_var(void)
 {
 	return (g_struct_var);
 }
+
+t_sh_lg			*init_d()
+{
+	t_sh_lg	*d;
+
+	if (!(d = (t_sh_lg *)malloc(sizeof(t_sh_lg))))
+		return (NULL);
+	d->d = 0;
+	d->hd = 0;
+	d->hhd = 0;
+	d->ld = 0;
+	d->lld = 0;
+	return (d);
+}
+
