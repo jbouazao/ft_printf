@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 15:46:25 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/25 13:08:06 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/26 09:53:45 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int			ft_printf(const char *format, ...)
 	va_end(ap);
 	return (ret);
 }
-int main()
+int 		main(void)
 {
 	ft_printf("|%23.50s|%-23.5s|%-23.50s", NULL, NULL, NULL);
 	printf("\n|%23.50s|%-23.5s|%-23.50s",NULL, NULL, NULL);

@@ -6,7 +6,7 @@
 #    By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/25 10:02:55 by jbouazao          #+#    #+#              #
-#    Updated: 2019/06/26 09:45:18 by jbouazao         ###   ########.fr        #
+#    Updated: 2019/06/26 12:06:52 by jbouazao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME = libftprintf.a
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC = srcs/c_conv.c srcs/spc_perc_strct.c srcs/s_conv.c ft_printf.c
+SRC = srcs/*.c ft_printf.c
 
-OBJ = c_conv.o spc_perc_strct.o s_conv.o ft_printf.o
+OBJ = *.o
 
 LIBFT = libft/*.o
 
