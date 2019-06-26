@@ -6,13 +6,13 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:29:28 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/26 12:34:51 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/26 13:00:21 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static void		*check_h_l(const char *frm, int *i, va_list ap)
+static void		*check_h_l(const char *frm, int *i, va_list ap, int flag)
 {
 	int					index;
 	long long int		lld;
@@ -32,13 +32,13 @@ static void		*check_h_l(const char *frm, int *i, va_list ap)
 	}
 	else
 		d = va_arg(ap, int);
-	return (d);
 }
 
 void			d_conv(const char *frm, int *i, va_list ap, int *ret)
 {
-	void	*d;
+	int		flag;
 
-	d = check_h_l(frm, i, ap);
+	flag = 0;
+	d = check_h_l(frm, i, ap, flag);
 	printf("%d", 5);
 }
