@@ -6,13 +6,13 @@
 /*   By: yjouaoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 10:09:51 by yjouaoud          #+#    #+#             */
-/*   Updated: 2019/06/24 10:35:50 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/25 12:15:50 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void					c_conv(const char *frm, int *i, va_list ap)
+void					c_conv(const char *frm, int *i, va_list ap, int *ret)
 {
 	char	c;
 	int		it;
@@ -21,15 +21,15 @@ void					c_conv(const char *frm, int *i, va_list ap)
 	c = va_arg(ap, int);
 	if (frm[*i] == '-' && (frm[(*i) + 1] >= '1' && frm[(*i) + 1] <= '9'))
 	{
-		write(1, &c, 1);
+		*ret += write(1, &c, 1);
 		(*i)++;
-		print_spaces(ft_atoi(&frm[*i]));
+		*ret += print_spaces(ft_atoi(&frm[*i]) - 1);
 	}
 	else if (frm[*i] >= '1' && frm[*i] <= '9')
 	{
-		print_spaces(ft_atoi(&frm[*i]) - 1);
-		write(1, &c, 1);
+		*ret += print_spaces(ft_atoi(&frm[*i]) - 1);
+		*ret += write(1, &c, 1);
 	}
 	else
-		write(1, &c, 1);
+		*ret += write(1, &c, 1);
 }

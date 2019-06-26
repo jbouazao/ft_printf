@@ -6,69 +6,79 @@
 /*   By: yjouaoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 10:10:25 by yjouaoud          #+#    #+#             */
-/*   Updated: 2019/06/24 11:30:59 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/25 13:03:27 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static void			ft_putstr_s(const char *s, int pr)
+static int			ft_putstr_s(const char *s, int pr)
 {
+	int	count;
+
+	count = 0;
 	while (*s && pr)
 	{
-		write(1, s, 1);
+		count += write(1, s, 1);
 		s++;
 		pr--;
 	}
+	return (count);
 }
 
-static void			s_conv_n(t_s_conv pram, char *s)
+static void			s_conv_n(t_s_conv pram, char *s, int *ret)
 {
 	if (pram.width >= pram.pr)
 	{
 		if (pram.pr >= 0)
 		{
-			ft_putstr_s(s, pram.pr);
+			*ret += ft_putstr_s(s, pram.pr);
 			if (ft_strlen(s) > (size_t)pram.pr)
-				print_spaces(pram.width - pram.pr);
+				*ret += print_spaces(pram.width - pram.pr);
 			else
-				print_spaces(pram.width - ft_strlen(s));
+				*ret += print_spaces(pram.width - ft_strlen(s));
 		}
 		else
 		{
-			ft_putstr(s);
-			print_spaces(pram.width - ft_strlen(s));
+			*ret += ft_putstr_s(s, (int)ft_strlen(s));
+			*ret += print_spaces(pram.width - ft_strlen(s));
 		}
 	}
 	else if (pram.width < pram.pr)
-		ft_putstr_s(s, pram.pr);
+	{
+		*ret += ft_putstr_s(s, pram.pr);
+		*ret += print_spaces(pram.width - ft_strlen(s));
+	}
 }
 
-static void			s_conv_p(t_s_conv pram, char *s)
+static void			s_conv_p(t_s_conv pram, char *s, int *ret)
 {
 	if (pram.flag == '+' && pram.width >= pram.pr)
 	{
 		if (pram.pr >= 0)
 		{
 			if (ft_strlen(s) > (size_t)pram.pr)
-				print_spaces(pram.width - pram.pr);
+				*ret += print_spaces(pram.width - pram.pr);
 			else
-				print_spaces(pram.width - ft_strlen(s));
-			ft_putstr_s(s, pram.pr);
+				*ret += print_spaces(pram.width - ft_strlen(s));
+			*ret += ft_putstr_s(s, pram.pr);
 		}
 		else
 		{
-			print_spaces(pram.width - ft_strlen(s));
-			ft_putstr(s);
+			*ret += print_spaces(pram.width - ft_strlen(s));
+			*ret += ft_putstr_s(s, (int)ft_strlen(s));
 		}
 	}
 	else if (pram.flag == '+' && pram.width < pram.pr)
-		ft_putstr_s(s, pram.pr);
+	{
+		*ret += print_spaces(pram.width - ft_strlen(s));
+		*ret += ft_putstr_s(s, pram.pr);
+	}
 	else if (pram.flag == '-')
-		s_conv_n(pram, s);
+		s_conv_n(pram, s, ret);
 }
 
-void				s_conv(const char *frm, int *i, va_list ap)
+void				s_conv(const char *frm, int *i, va_list ap, int *ret)
 {
 	char		*s;
 	t_s_conv	pram;
@@ -93,6 +103,6 @@ void				s_conv(const char *frm, int *i, va_list ap)
 		pram.pr = ft_atoi(&frm[(*i + 1)]);
 	else
 		pram.pr = -1;
-	s_conv_p(pram, str);
+	s_conv_p(pram, str, ret);
 	free(str);
 }
