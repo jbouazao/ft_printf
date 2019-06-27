@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 11:42:52 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/25 11:51:15 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/27 15:09:12 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,3 +59,13 @@ t_sh_lg			*init_d()
 	return (d);
 }
 
+t_d_flags		init_d_flags(void)
+{
+	t_d_flags	flags;
+
+	flags.flag_p = 0;
+	flags.flag_n = 0;
+	flags.flag_sp = 0;
+	flags.flag_0 = 0;
+	return (flags);
+}
