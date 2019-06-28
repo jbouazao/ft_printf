@@ -6,101 +6,110 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:29:28 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/27 16:14:01 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/28 15:00:42 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static t_sh_lg		*check_h_l(const char *frm, int *i)
+static int			check_h_l(const char *frm, int *i)
 {
 	int		index;
-	t_sh_lg	*d;
+	int		flag_d;
 
 	index = *i;
+	flag_d = 0;
 	while (frm[index + 1] != 'd')
 		index++;
-	d = init_d();
 	if (frm[index] == 'h')
 	{
 		if (frm[index - 1] == 'h')
-			d->hhd = 1;
+			flag_d = 1;
 		else if (frm[index] == 'h' && frm[index - 1] != 'h')
-			d->hd = 1;
+			flag_d = 2;
 	}
 	if (frm[index] == 'l')
 	{
 		if (frm[index - 1] == 'l')
-			d->lld = 1;
+			flag_d = 3;
 		else if (frm[index] == 'l' && frm[index - 1] != 'l')
-			d->ld = 1;
+			flag_d = 4;
 	}
 	else
-		d->d = 1;
-	return (d);
+		flag_d = 5;
+	return (flag_d);
 }
 
-static void			assign_d(t_sh_lg *d, va_list ap)
+static int			assign_d(int flag_d, va_list ap)
 {
-	if (d->d == 1)
-		d->d = va_arg(ap, int);
-	else if (d->hd == 1)
-		d->hd = (short int)va_arg(ap, int);
-	else if (d->hhd == 1)
-		d->hhd = (char)va_arg(ap, int);
-	else if (d->ld == 1)
-		d->ld = va_arg(ap, long int);
-	else if (d->lld == 1)
-		d->lld = va_arg(ap, long long int);
+	long long int d;
+
+	d = 0;
+	if (flag_d == 5)
+		d = (int)va_arg(ap, int);
+	else if (flag_d == 2)
+		d = (short int)va_arg(ap, int);
+	else if (flag_d == 1)
+		d = (char)va_arg(ap, int);
+	else if (flag_d == 4)
+		d = va_arg(ap, long int);
+	else if (flag_d == 3)
+		d = va_arg(ap, long long int);
+	return (d);
 }
 
 static t_d_flags	chck_flags(const char *frm, int *i)
 {
 	t_d_flags	flags;
-	int			tp_i;
 
-	flags = init_d_flags(void);
-	tp_i = *i;
-	while (frm[tp_i] <= 0 || frm[tp_i] >= 9)
+	flags = init_d_flags();
+	while ((frm[*i] <= '0' || frm[*i] > '9') && frm[*i] != 'd')
 	{
-		if (frm[tp_i] == '+')
+		if (frm[*i] == '+')
 			flags.flag_p = 1;
-		if (frm[tp_i] == '-')
+		if (frm[*i] == '-')
 			flags.flag_n = 1;
-		if (frm[tp_i] == ' ')
+		if (frm[*i] == ' ')
 			flags.flag_sp = 1;
-		tp_i++;
+		if (frm[*i] == '0')
+			flags.flag_0 = 1;
+		(*i)++;
 	}
-	if (frm[tp_i] == '0')
-		flags.flag_0 = 1;
 	return (flags);
 }
 
-static void			wdth_prc(int *wdth, int *prc, const char *frm, t_sh_lg *d)
+static void			wdth_prc(const char *frm, int *i, int *wdth, int *prec)
 {
-	int index;
-
-	index = *i;
-	if (!(wdth = (int *)malloc(sizeof(int))))
-		return (NULL);
-	if (!(prec = (int *)malloc(sizeof(int))))
-		return (NULL);
-	while ()
+	while (frm[*i] != 'h' && frm[*i] != 'l' && frm[*i] != 'd')
+	{
+		if (frm[*i] >= '1' && frm[*i] <= '9')
+		{
+			*wdth = ft_atoi(&frm[*i]);
+			while (frm[*i] != '.' && frm[*i] != 'd')
+				(*i)++;
+		}
+		if (frm[*i] == '.')
+		{
+			*prec = ft_atoi(&frm[(*i) + 1]);
+			break ;
+		}
+		(*i)++;
+	}
+	while (frm[*i] != 'd')
+		(*i)++;
 }
 
 void				d_conv(const char *frm, int *i, va_list ap, int *ret)
 {
-	t_sh_lg		*d;
-	t_d_flags	flags;
-	int			*wdth;
-	int			*prec;
+	long long int	d;
+	t_d_flags		flags;
+	int				flag_d;
+	*ret = 0;
 
-	d = check_h_l(frm, i);
-	assign_d(d, ap);
+	flag_d = check_h_l(frm, i);
+	d = assign_d(flag_d, ap);
 	flags = chck_flags(frm, i);
-	wdth_prc(wdth, prec);
-	if(flags.flag_n == 1)
-	{
-		
-	}
+	wdth_prc(frm, i, &(flags.wdth), &(flags.prec));
+	if (flags.flag_n == 1)
+
 }

@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 13:01:34 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/27 15:08:46 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/06/28 14:54:28 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,19 @@ typedef struct	s_d_flags
 	int flag_n;
 	int flag_sp;
 	int flag_0;
-}				t_d_flags
+	int	wdth;
+	int prec;
+}				t_d_flags;
 
-typedef struct	s_sh_lg
+/*typedef struct	s_sh_lg
 {
 	int				d;
 	long int		ld;
 	long long int	lld;
 	short int		hd;
 	char			hhd;
-}				t_sh_lg;
+	long long int	number;
+}				t_sh_lg;*/
 
 typedef	struct	s_s_conv
 {
@@ -53,7 +56,8 @@ void			perc_conv(const char *frm, int *i, va_list ap, int *ret);
 void			c_conv(const char *frm, int *i, va_list ap, int *ret);
 void			s_conv(const char *format, int *i, va_list ap, int *ret);
 void			p_conv(const char *format, int *i, va_list ap, int *ret);
-t_sh_lg			*init_d(void);
-t_d_flags		init_d_flags(void)
+//t_sh_lg			*init_d(void);
+t_d_flags		init_d_flags(void);
+void			d_conv(const char *frm, int *i, va_list ap, int *ret);
 
 #endif
