@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:29:28 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/28 15:00:42 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/01 11:53:01 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,10 @@ static t_d_flags	chck_flags(const char *frm, int *i)
 	t_d_flags	flags;
 
 	flags = init_d_flags();
-	while ((frm[*i] <= '0' || frm[*i] > '9') && frm[*i] != 'd')
+	while (frm[*i] != 'd' && frm[*i] != '.')
 	{
+		if (frm[*i] >= '1' && frm[*i] <= '9')
+			return (flags);
 		if (frm[*i] == '+')
 			flags.flag_p = 1;
 		if (frm[*i] == '-')
@@ -110,6 +112,6 @@ void				d_conv(const char *frm, int *i, va_list ap, int *ret)
 	d = assign_d(flag_d, ap);
 	flags = chck_flags(frm, i);
 	wdth_prc(frm, i, &(flags.wdth), &(flags.prec));
-	if (flags.flag_n == 1)
-
+	printf("plus: %d\nmoins: %d\nespace: %d\nzero: %d", flags.flag_p, flags.flag_n, flags.flag_sp, flags.flag_0);
+	printf("\n%d %d", flags.wdth, flags.prec);
 }
