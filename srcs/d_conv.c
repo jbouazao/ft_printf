@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:29:28 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/01 11:53:01 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/02 15:36:22 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,31 +68,32 @@ static t_d_flags	chck_flags(const char *frm, int *i)
 		if (frm[*i] >= '1' && frm[*i] <= '9')
 			return (flags);
 		if (frm[*i] == '+')
-			flags.flag_p = 1;
+			flags.flg_p = 1;
 		if (frm[*i] == '-')
-			flags.flag_n = 1;
+			flags.flg_n = 1;
 		if (frm[*i] == ' ')
-			flags.flag_sp = 1;
+			flags.flg_sp = 1;
 		if (frm[*i] == '0')
-			flags.flag_0 = 1;
+			flags.flg_0 = 1;
 		(*i)++;
 	}
 	return (flags);
 }
 
-static void			wdth_prc(const char *frm, int *i, int *wdth, int *prec)
+static void			wdth_prc(const char *frm, int *i, t_d_flags *flags)
 {
 	while (frm[*i] != 'h' && frm[*i] != 'l' && frm[*i] != 'd')
 	{
 		if (frm[*i] >= '1' && frm[*i] <= '9')
 		{
-			*wdth = ft_atoi(&frm[*i]);
+			flags->wdth = ft_atoi(&frm[*i]);
 			while (frm[*i] != '.' && frm[*i] != 'd')
 				(*i)++;
 		}
 		if (frm[*i] == '.')
 		{
-			*prec = ft_atoi(&frm[(*i) + 1]);
+			flags->dot = 1;
+			flags->prec = ft_atoi(&frm[(*i) + 1]);
 			break ;
 		}
 		(*i)++;
@@ -111,7 +112,6 @@ void				d_conv(const char *frm, int *i, va_list ap, int *ret)
 	flag_d = check_h_l(frm, i);
 	d = assign_d(flag_d, ap);
 	flags = chck_flags(frm, i);
-	wdth_prc(frm, i, &(flags.wdth), &(flags.prec));
-	printf("plus: %d\nmoins: %d\nespace: %d\nzero: %d", flags.flag_p, flags.flag_n, flags.flag_sp, flags.flag_0);
-	printf("\n%d %d", flags.wdth, flags.prec);
+	wdth_prc(frm, i, &flags);
+	m_chk(flags, d);
 }

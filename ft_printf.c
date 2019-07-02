@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 15:46:25 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/28 13:06:33 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/02 16:10:28 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int			ft_printf(const char *format, ...)
 }
 int 		main(void)
 {
-	long long int a = 5;
-	ft_printf("% - 0 + 5.2lld", a);
+	long long int a = -5;
+	ft_printf("|%-+5.3lld|", a);
+	printf("\n|%-+5.3lld|", a);
 }
