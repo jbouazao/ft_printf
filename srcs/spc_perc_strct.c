@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 11:42:52 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/02 13:30:01 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/03 11:30:17 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ int				print_0(int width)
 	return (count);
 }
 
-
-int				print_spaces(int width)
+int				print_spaces(int width, long long int d)
 {
 	int i;
 	int count;
 
 	i = 0;
 	count = 0;
+	if (d < 0)
+		width++;
 	while (i < width)
 	{
 		count += write(1, " ", 1);
@@ -70,8 +71,8 @@ t_d_flags		init_d_flags(void)
 	flags.flg_n = 0;
 	flags.flg_sp = 0;
 	flags.flg_0 = 0;
-	flags.wdth = 0;
-	flags.prec = 0;
+	flags.wd = 0;
+	flags.pr = 0;
 	flags.dot = 0;
 	return (flags);
 }

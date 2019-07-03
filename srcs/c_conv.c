@@ -6,7 +6,7 @@
 /*   By: yjouaoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 10:09:51 by yjouaoud          #+#    #+#             */
-/*   Updated: 2019/06/28 13:06:31 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/03 10:43:27 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void					c_conv(const char *frm, int *i, va_list ap, int *ret)
 	{
 		*ret += write(1, &c, 1);
 		(*i)++;
-		*ret += print_spaces(ft_atoi(&frm[*i]) - 1);
+		*ret += print_spaces(ft_atoi(&frm[*i]) - 1, 0);
 	}
 	else if (frm[*i] >= '1' && frm[*i] <= '9')
 	{
-		*ret += print_spaces(ft_atoi(&frm[*i]) - 1);
+		*ret += print_spaces(ft_atoi(&frm[*i]) - 1, 0);
 		*ret += write(1, &c, 1);
 	}
 	else

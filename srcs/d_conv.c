@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:29:28 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/02 15:36:22 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/03 11:01:48 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ static void			wdth_prc(const char *frm, int *i, t_d_flags *flags)
 	{
 		if (frm[*i] >= '1' && frm[*i] <= '9')
 		{
-			flags->wdth = ft_atoi(&frm[*i]);
+			flags->wd = ft_atoi(&frm[*i]);
 			while (frm[*i] != '.' && frm[*i] != 'd')
 				(*i)++;
 		}
 		if (frm[*i] == '.')
 		{
 			flags->dot = 1;
-			flags->prec = ft_atoi(&frm[(*i) + 1]);
+			flags->pr = ft_atoi(&frm[(*i) + 1]);
 			break ;
 		}
 		(*i)++;
@@ -107,11 +107,10 @@ void				d_conv(const char *frm, int *i, va_list ap, int *ret)
 	long long int	d;
 	t_d_flags		flags;
 	int				flag_d;
-	*ret = 0;
 
 	flag_d = check_h_l(frm, i);
 	d = assign_d(flag_d, ap);
 	flags = chck_flags(frm, i);
 	wdth_prc(frm, i, &flags);
-	m_chk(flags, d);
+	m_chk(flags, d, ret);
 }

@@ -6,7 +6,7 @@
 /*   By: yjouaoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 10:10:25 by yjouaoud          #+#    #+#             */
-/*   Updated: 2019/06/25 13:03:27 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/03 10:42:46 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,20 @@ static void			s_conv_n(t_s_conv pram, char *s, int *ret)
 		{
 			*ret += ft_putstr_s(s, pram.pr);
 			if (ft_strlen(s) > (size_t)pram.pr)
-				*ret += print_spaces(pram.width - pram.pr);
+				*ret += print_spaces(pram.width - pram.pr, 0);
 			else
-				*ret += print_spaces(pram.width - ft_strlen(s));
+				*ret += print_spaces(pram.width - ft_strlen(s), 0);
 		}
 		else
 		{
 			*ret += ft_putstr_s(s, (int)ft_strlen(s));
-			*ret += print_spaces(pram.width - ft_strlen(s));
+			*ret += print_spaces(pram.width - ft_strlen(s), 0);
 		}
 	}
 	else if (pram.width < pram.pr)
 	{
 		*ret += ft_putstr_s(s, pram.pr);
-		*ret += print_spaces(pram.width - ft_strlen(s));
+		*ret += print_spaces(pram.width - ft_strlen(s), 0);
 	}
 }
 
@@ -58,20 +58,20 @@ static void			s_conv_p(t_s_conv pram, char *s, int *ret)
 		if (pram.pr >= 0)
 		{
 			if (ft_strlen(s) > (size_t)pram.pr)
-				*ret += print_spaces(pram.width - pram.pr);
+				*ret += print_spaces(pram.width - pram.pr, 0);
 			else
-				*ret += print_spaces(pram.width - ft_strlen(s));
+				*ret += print_spaces(pram.width - ft_strlen(s), 0);
 			*ret += ft_putstr_s(s, pram.pr);
 		}
 		else
 		{
-			*ret += print_spaces(pram.width - ft_strlen(s));
+			*ret += print_spaces(pram.width - ft_strlen(s), 0);
 			*ret += ft_putstr_s(s, (int)ft_strlen(s));
 		}
 	}
 	else if (pram.flag == '+' && pram.width < pram.pr)
 	{
-		*ret += print_spaces(pram.width - ft_strlen(s));
+		*ret += print_spaces(pram.width - ft_strlen(s), 0);
 		*ret += ft_putstr_s(s, pram.pr);
 	}
 	else if (pram.flag == '-')
