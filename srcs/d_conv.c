@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:29:28 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/03 11:01:48 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/04 11:14:37 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static int			check_h_l(const char *frm, int *i)
 	return (flag_d);
 }
 
-static int			assign_d(int flag_d, va_list ap)
+static long long			assign_d(int flag_d, va_list ap)
 {
-	long long int d;
+	long long int  d;
 
 	d = 0;
 	if (flag_d == 5)
@@ -52,9 +52,9 @@ static int			assign_d(int flag_d, va_list ap)
 	else if (flag_d == 1)
 		d = (char)va_arg(ap, int);
 	else if (flag_d == 4)
-		d = va_arg(ap, long int);
+		d = (long)va_arg(ap, long int);
 	else if (flag_d == 3)
-		d = va_arg(ap, long long int);
+		d = (long long)va_arg(ap, long long int);
 	return (d);
 }
 

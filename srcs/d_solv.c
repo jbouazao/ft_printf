@@ -6,25 +6,25 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 11:21:27 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/03 12:15:36 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/04 11:23:38 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int		ft_nbln(long long int nbr)
+int		ft_nbln(long long int nbr, t_d_flags flg)
 {
-	if (nbr == 0)
+	if (nbr == 0 && flg.dot == 1)
 		return (0);
 	if (nbr < 0)
 	{
 		nbr *= -1;
-		return (1 + ft_nbln(nbr));
+		return (1 + ft_nbln(nbr, flg));
 	}
 	if ((nbr / 10) == 0)
 		return (1);
 	else
-		return (1 + ft_nbln(nbr / 10));
+		return (1 + ft_nbln((nbr / 10), flg));
 }
 
 int		ft_pf_putnbr(long long int n, t_d_flags flg)
@@ -71,7 +71,10 @@ int		p_m_chk(t_d_flags *flg, long long int d)
 		flg->wd -= 1;
 	}
 	else if (d < 0)
+	{
 		ret += write(1, "-", 1);
+		flg->wd -= 1;
+	}
 	return (ret);
 }
 
@@ -80,26 +83,26 @@ void	m_chk(t_d_flags flg, long long int d, int *ret)
 	if (flg.flg_n == 1)
 	{
 		*ret += p_m_chk(&flg, d);
-		*ret += print_0((d >= 0) ? (flg.pr - ft_nbln(d)) : flg.pr - ft_nbln(d)
-				+ 1);
+		*ret += print_0((d >= 0) ? (flg.pr - ft_nbln(d, flg)) :
+				flg.pr - ft_nbln(d, flg) + 1);
 		*ret += ft_pf_putnbr(d, flg);
-		*ret += print_spaces((flg.pr > ft_nbln(d)) ? (flg.wd - flg.pr) :
-				(flg.wd - ft_nbln(d)), d);
+		*ret += print_spaces((flg.pr > ft_nbln(d, flg)) ? (flg.wd - flg.pr) :
+				(flg.wd - ft_nbln(d, flg)), d);
 	}
 	else if (flg.flg_0 == 1 && flg.dot == 0)
 	{
 		*ret += p_m_chk(&flg, d);
-		*ret += print_0(flg.wd - ft_nbln(d));
+		*ret += print_0(flg.wd - ft_nbln(d, flg));
 		*ret += ft_pf_putnbr(d, flg);
 	}
 	else
 	{
-		flg.wd -= (flg.flg_p == 1 || flg.flg_sp == 1) ? 1 : 0;
-		*ret += print_spaces((flg.pr > ft_nbln(d)) ? (flg.wd - flg.pr) :
-				(flg.wd - ft_nbln(d)), d);
+		flg.wd -= (flg.flg_p == 1 || flg.flg_sp == 1 || d < 0) ? 1 : 0;
+		*ret += print_spaces((flg.pr > ft_nbln(d, flg)) ? (flg.wd - flg.pr) :
+				(flg.wd - ft_nbln(d, flg)), d);
 		*ret += p_m_chk(&flg, d);
-		*ret += print_0((d >= 0) ? (flg.pr - ft_nbln(d)) :
-				flg.pr - ft_nbln(d)+ 1);
+		*ret += print_0((d >= 0) ? (flg.pr - ft_nbln(d, flg)) :
+				flg.pr - ft_nbln(d, flg) + 1);
 		*ret += ft_pf_putnbr(d, flg);
 	}
 }
