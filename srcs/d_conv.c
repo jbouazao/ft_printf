@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:29:28 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/04 11:14:37 by oelbelam         ###   ########.fr       */
+/*   Updated: 2019/07/04 12:35:17 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ static long long			assign_d(int flag_d, va_list ap)
 	else if (flag_d == 1)
 		d = (char)va_arg(ap, int);
 	else if (flag_d == 4)
-		d = (long)va_arg(ap, long int);
+		d = va_arg(ap, long int);
 	else if (flag_d == 3)
-		d = (long long)va_arg(ap, long long int);
+		d = va_arg(ap, long long int);
 	return (d);
 }
 

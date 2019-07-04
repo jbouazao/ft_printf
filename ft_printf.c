@@ -6,12 +6,12 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 15:46:25 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/04 11:25:40 by oelbelam         ###   ########.fr       */
+/*   Updated: 2019/07/04 12:36:46 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+#include <limits.h>
 void		det_flag(const char *format, int *i, va_list ap, int *ret)
 {
 	int				it;
@@ -61,8 +61,8 @@ int			ft_printf(const char *format, ...)
 }
 int 		main(void)
 {
-	printf("\nret = %d\n", ft_printf("%.5lld|%-.5lld|%+.5lld|% .5lld|%0.5lld", LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN));
-	//printf("\nret ---> %d\n",printf(("%1.5lld|%));
+	ft_printf("%1ld|%-1ld|%+1ld|% 1ld|%01ld", LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN);
+	/*printf("%1ld|%-1ld|%+1ld|% 1ld|%01ld", LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN);*/
 	/*printf("\nret = %d", printf("%-+1d|%- 1d|%-01d|%+ 1d|%+01d|% 01d|%-+ 01d", 0, 0, 0, 0, 0, 0, 0));*/
 	/*ft_printf("|%5.d|", -0);
 	printf("\n|%5.d|", -0);*/
