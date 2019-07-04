@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 11:21:27 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/04 12:26:12 by oelbelam         ###   ########.fr       */
+/*   Updated: 2019/07/04 12:59:41 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_nbln(long long int d, t_d_flags flg)
 	len = 0;
 	if (d == 0 && flg.dot == 1)
 		return (0);
-	if (d < 0)
+	if (d < 0 || d == 0)
 		len++;
 	while (d)
 	{
@@ -84,24 +84,24 @@ void	m_chk(t_d_flags flg, long long int d, int *ret)
 	if (flg.flg_n == 1)
 	{
 		*ret += p_m_chk(&flg, d);
-		*ret += print_0((d >= 0) ? (flg.pr - ft_nbln((int64_t)d, flg)) :
-				flg.pr - ft_nbln((int64_t)d, flg) + 1);
+		*ret += print_0((d >= 0) ? (flg.pr - ft_nbln(d, flg)) :
+				flg.pr - ft_nbln(d, flg) + 1);
 		*ret += ft_pf_putnbr(d, flg);
-		*ret += print_spaces((flg.pr > ft_nbln((int64_t)d, flg)) ? (flg.wd - flg.pr) :
-				(flg.wd - ft_nbln((int64_t)d, flg)), d);
+		*ret += print_spaces((flg.pr > ft_nbln(d, flg)) ? (flg.wd - flg.pr) :
+				(flg.wd - ft_nbln(d, flg)), d);
 	}
 	else if (flg.flg_0 == 1 && flg.dot == 0)
 	{
 		*ret += p_m_chk(&flg, d);
-		*ret += print_0(flg.wd - ft_nbln((int64_t)d, flg));
+		*ret += print_0(flg.wd - ft_nbln(d, flg));
 		*ret += ft_pf_putnbr(d, flg);
 	}
 	else
 	{
 		flg.wd -= (flg.flg_p == 1 || flg.flg_sp == 1 || d < 0) ? 1 : 0;
-		*ret += print_spaces(((flg.pr > ft_nbln((int64_t)d, flg)) ? (flg.wd - flg.pr) : (flg.wd - ft_nbln((int64_t)d, flg))), d);
+		*ret += print_spaces(((flg.pr > ft_nbln(d, flg)) ? (flg.wd - flg.pr) : (flg.wd - ft_nbln(d, flg))), d);
 		*ret += p_m_chk(&flg, d);
-		*ret += print_0((d >= 0) ? (flg.pr - ft_nbln((int64_t)d, flg)) :flg.pr - ft_nbln((int64_t)d, flg) + 1);
+		*ret += print_0((d >= 0) ? (flg.pr - ft_nbln(d, flg)) :flg.pr - ft_nbln(d, flg) + 1);
 		*ret += ft_pf_putnbr(d, flg);
 	}
 }

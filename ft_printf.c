@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 15:46:25 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/04 12:36:46 by oelbelam         ###   ########.fr       */
+/*   Updated: 2019/07/04 13:07:25 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int			ft_printf(const char *format, ...)
 }
 int 		main(void)
 {
-	ft_printf("%1ld|%-1ld|%+1ld|% 1ld|%01ld", LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN);
-	/*printf("%1ld|%-1ld|%+1ld|% 1ld|%01ld", LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN);*/
+	ft_printf("%-+1d|%- 1d|%-01d|%+ 1d|%+01d|% 01d|%-+ 01d", 0, 0, 0, 0, 0, 0, 0);
+	//printf("\n%1d|%-1d|%+1d|% 1d|%01d", 0, 0, 0, 0, 0);
 	/*printf("\nret = %d", printf("%-+1d|%- 1d|%-01d|%+ 1d|%+01d|% 01d|%-+ 01d", 0, 0, 0, 0, 0, 0, 0));*/
 	/*ft_printf("|%5.d|", -0);
 	printf("\n|%5.d|", -0);*/
