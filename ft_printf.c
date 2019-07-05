@@ -6,12 +6,12 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 15:46:25 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/06/25 13:08:06 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/04 13:12:40 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+#include <limits.h>
 void		det_flag(const char *format, int *i, va_list ap, int *ret)
 {
 	int				it;
@@ -23,7 +23,7 @@ void		det_flag(const char *format, int *i, va_list ap, int *ret)
 	while (format[*i])
 	{
 		it = 0;
-		while (it < 3)
+		while (it < 4)
 		{
 			if (struct_tobe_man.flag[it] == format[*i])
 			{
@@ -59,8 +59,12 @@ int			ft_printf(const char *format, ...)
 	va_end(ap);
 	return (ret);
 }
-int main()
+int 		main(void)
 {
-	ft_printf("|%23.50s|%-23.5s|%-23.50s", NULL, NULL, NULL);
-	printf("\n|%23.50s|%-23.5s|%-23.50s",NULL, NULL, NULL);
+	ft_printf("%-+1d|%- 1d|%-01d|%+ 1d|%+01d|% 01d|%-+ 01d\n", 0, 0, 0, 0, 0, 0, 0);
+printf("%-+1d|%- 1d|%-01d|%+ 1d|%+01d|% 01d|%-+ 01d", 0, 0, 0, 0, 0, 0, 0);
+	//printf("\n%1d|%-1d|%+1d|% 1d|%01d", 0, 0, 0, 0, 0);
+	/*printf("\nret = %d", printf("%-+1d|%- 1d|%-01d|%+ 1d|%+01d|% 01d|%-+ 01d", 0, 0, 0, 0, 0, 0, 0));*/
+	/*ft_printf("|%5.d|", -0);
+	printf("\n|%5.d|", -0);*/
 }
