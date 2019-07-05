@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:29:28 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/04 12:35:17 by oelbelam         ###   ########.fr       */
+/*   Updated: 2019/07/05 12:29:23 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static t_d_flags	chck_flags(const char *frm, int *i)
 
 static void			wdth_prc(const char *frm, int *i, t_d_flags *flags)
 {
-	while (frm[*i] != 'h' && frm[*i] != 'l' && frm[*i] != 'd')
+	while (frm[*i] != 'h' && frm[*i] != 'l' && frm[*i] != 'd' && frm[*i])
 	{
 		if (frm[*i] >= '1' && frm[*i] <= '9')
 		{
@@ -96,7 +96,6 @@ static void			wdth_prc(const char *frm, int *i, t_d_flags *flags)
 			flags->pr = ft_atoi(&frm[(*i) + 1]);
 			break ;
 		}
-		(*i)++;
 	}
 	while (frm[*i] != 'd')
 		(*i)++;

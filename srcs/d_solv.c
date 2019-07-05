@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 11:21:27 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/04 12:59:41 by oelbelam         ###   ########.fr       */
+/*   Updated: 2019/07/05 13:03:37 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		p_m_chk(t_d_flags *flg, long long int d)
 	int ret;
 
 	ret = 0;
-	if (flg->flg_p == 1)
+	if (flg->flg_p == 1)//to be verified
 	{
 		flg->flg_p = (d >= 0) ? write(1, "+", 1) : write(1, "-", 1);
 		ret += 1;
@@ -83,6 +83,8 @@ void	m_chk(t_d_flags flg, long long int d, int *ret)
 {
 	if (flg.flg_n == 1)
 	{
+		if (d < 0)
+			flg.wd += 1;
 		*ret += p_m_chk(&flg, d);
 		*ret += print_0((d >= 0) ? (flg.pr - ft_nbln(d, flg)) :
 				flg.pr - ft_nbln(d, flg) + 1);
@@ -93,7 +95,7 @@ void	m_chk(t_d_flags flg, long long int d, int *ret)
 	else if (flg.flg_0 == 1 && flg.dot == 0)
 	{
 		*ret += p_m_chk(&flg, d);
-		*ret += print_0(flg.wd - ft_nbln(d, flg));
+		*ret += print_0((d >= 0) ? (flg.wd - ft_nbln(d, flg)) : (flg.wd - ft_nbln(d, flg) + 1));
 		*ret += ft_pf_putnbr(d, flg);
 	}
 	else
