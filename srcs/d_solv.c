@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 11:21:27 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/05 13:03:37 by oelbelam         ###   ########.fr       */
+/*   Updated: 2019/07/05 13:12:03 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void	m_chk(t_d_flags flg, long long int d, int *ret)
 {
 	if (flg.flg_n == 1)
 	{
-		if (d < 0)
-			flg.wd += 1;
+		/*if (d < 0)
+			flg.wd += 1;*/
 		*ret += p_m_chk(&flg, d);
 		*ret += print_0((d >= 0) ? (flg.pr - ft_nbln(d, flg)) :
 				flg.pr - ft_nbln(d, flg) + 1);

@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 11:42:52 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/05 12:52:18 by oelbelam         ###   ########.fr       */
+/*   Updated: 2019/07/05 13:12:40 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int				print_spaces(int width, long long int d)
 	(void)d;
 	i = 0;
 	count = 0;
-	/*if (d < 0)
-		width++;*/
+	if (d < 0)
+		width++;
 	while (0 < width)
 	{
 		count += write(1, " ", 1);
