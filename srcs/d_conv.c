@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:29:28 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/05 12:29:23 by oelbelam         ###   ########.fr       */
+/*   Updated: 2019/07/05 15:34:13 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void				d_conv(const char *frm, int *i, va_list ap, int *ret)
 
 	flag_d = check_h_l(frm, i);
 	d = assign_d(flag_d, ap);
+	printf("%lld", d);
 	flags = chck_flags(frm, i);
 	wdth_prc(frm, i, &flags);
 	m_chk(flags, d, ret);
