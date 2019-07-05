@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 11:21:27 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/05 15:43:33 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/05 15:46:21 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		ft_nbln(long long int d, t_d_flags flg)
 	}
 	return (len);
 }
+
 int		ft_pf_putnbr(long long int n, t_d_flags flg)
 {
 	long long int			temp;
@@ -105,10 +106,10 @@ void	m_chk(t_d_flags flg, long long int d, int *ret)
 		*ret += ft_pf_putnbr(d, flg);
 		if (d < 0)
 			*ret += print_spaces((flg.pr > ft_nbln(d, flg)) ?
-					(flg.wd - flg.pr -1) :(flg.wd - ft_nbln(d, flg)), d);
+					(flg.wd - flg.pr - 1) : (flg.wd - ft_nbln(d, flg)), d);
 		else
 			*ret += print_spaces((flg.pr > ft_nbln(d, flg)) ?
-					(flg.wd - flg.pr) :(flg.wd - ft_nbln(d, flg)), d);
+					(flg.wd - flg.pr) : (flg.wd - ft_nbln(d, flg)), d);
 	}
 	else if (flg.flg_0 == 1 && flg.dot == 0)
 	{
