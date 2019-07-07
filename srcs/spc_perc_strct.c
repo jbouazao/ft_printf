@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 11:42:52 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/07 13:08:51 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/07 21:51:05 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,13 @@ int				print_0(int width)
 	return (count);
 }
 
-int				print_spaces(int width, long long int d)
+int				print_spaces(int width)
 {
 	int i;
 	int count;
 
-	(void)d;
 	i = 0;
 	count = 0;
-	/*if (d < 0)
-		width++;*/
 	while (0 < width)
 	{
 		count += write(1, " ", 1);
@@ -55,8 +52,8 @@ void			perc_conv(const char *format, int *i, va_list ap, int *ret)
 
 const t_flags_struct g_struct_var =
 {
-	{ "%csd" },
-	{ &perc_conv, &c_conv, &s_conv, &d_conv }
+	{ "%csdo" },
+	{ &perc_conv, &c_conv, &s_conv, &d_conv, &o_conv }
 };
 
 t_flags_struct	get_struct_var(void)

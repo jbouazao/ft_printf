@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 15:46:25 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/07 13:12:27 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/07 22:37:11 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		det_flag(const char *format, int *i, va_list ap, int *ret)
 	while (format[*i])
 	{
 		it = 0;
-		while (it < 4)
+		while (it < 5)
 		{
 			if (struct_tobe_man.flag[it] == format[*i])
 			{
@@ -61,10 +61,6 @@ int			ft_printf(const char *format, ...)
 }
 int 		main(void)
 {
-	//ft_printf("%o|%-o|%#o|%0o", 0U, 0U, 0U, 0U);
-	printf("%1o|%-1o|%#o|%01o", UINT_MAX, UINT_MAX, UINT_MAX, UINT_MAX);
-	//printf("\n%1d|%-1d|%+1d|% 1d|%01d", 0, 0, 0, 0, 0);
-	/*printf("\nret = %d", printf("%-+1d|%- 1d|%-01d|%+ 1d|%+01d|% 01d|%-+ 01d", 0, 0, 0, 0, 0, 0, 0));*/
-	/*ft_printf("|%5.d|", -0);
-	printf("\n|%5.d|", -0);*/
+	 printf(",ret:%d\n", ft_printf("1:|%10o", 10));
+	 printf(",ret:%d", printf("2:|%10o|", 10));
 }

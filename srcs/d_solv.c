@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 11:21:27 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/05 15:46:21 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/07 21:12:03 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ void	m_chk_c(t_flags flg, long long int d, int *ret)
 	flg.wd -= (flg.flg_p == 1 || flg.flg_sp == 1 || d < 0) ? 1 : 0;
 	if (d < 0)
 		*ret += print_spaces(((flg.pr > ft_nbln(d, flg)) ?
-					(flg.wd - flg.pr) : (flg.wd - ft_nbln(d, flg)) + 1), d);
+					(flg.wd - flg.pr) : (flg.wd - ft_nbln(d, flg)) + 1));
 	else
 		*ret += print_spaces(((flg.pr > ft_nbln(d, flg)) ?
-					(flg.wd - flg.pr) : (flg.wd - ft_nbln(d, flg))), d);
+					(flg.wd - flg.pr) : (flg.wd - ft_nbln(d, flg))));
 	*ret += p_m_chk(&flg, d);
 	*ret += print_0((d >= 0) ? (flg.pr - ft_nbln(d, flg)) :
 			flg.pr - ft_nbln(d, flg) + 1);
@@ -106,10 +106,10 @@ void	m_chk(t_flags flg, long long int d, int *ret)
 		*ret += ft_pf_putnbr(d, flg);
 		if (d < 0)
 			*ret += print_spaces((flg.pr > ft_nbln(d, flg)) ?
-					(flg.wd - flg.pr - 1) : (flg.wd - ft_nbln(d, flg)), d);
+					(flg.wd - flg.pr - 1) : (flg.wd - ft_nbln(d, flg)));
 		else
 			*ret += print_spaces((flg.pr > ft_nbln(d, flg)) ?
-					(flg.wd - flg.pr) : (flg.wd - ft_nbln(d, flg)), d);
+					(flg.wd - flg.pr) : (flg.wd - ft_nbln(d, flg)));
 	}
 	else if (flg.flg_0 == 1 && flg.dot == 0)
 	{

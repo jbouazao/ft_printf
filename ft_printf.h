@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 13:01:34 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/07 13:16:06 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/07 22:28:20 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,18 @@ typedef struct	s_flags_struct
 }				t_flags_struct;
 
 t_flags_struct	get_struct_var();
-int				print_spaces(int width, long long int d);
+int				print_spaces(int width);
 void			perc_conv(const char *frm, int *i, va_list ap, int *ret);
 void			c_conv(const char *frm, int *i, va_list ap, int *ret);
 void			s_conv(const char *format, int *i, va_list ap, int *ret);
 void			p_conv(const char *format, int *i, va_list ap, int *ret);
+void			o_conv(const char *frm, int *i, va_list ap, int *ret);
 t_flags			init_flags(void);
 void			d_conv(const char *frm, int *i, va_list ap, int *ret);
 int				print_0(int wdth);
 void			m_chk(t_flags flg, long long int d, int *ret);
+unsigned long long				ft_nbr_oct(unsigned long long nbr);
+int				ft_pf_putnbr_o(unsigned long long n, t_flags flg);
+void			o_solv(t_flags flg, unsigned long long o, int *ret);
 
 #endif
