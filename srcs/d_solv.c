@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-int		ft_nbln(long long int d, t_d_flags flg)
+int		ft_nbln(long long int d, t_flags flg)
 {
 	int len;
 
@@ -29,7 +29,7 @@ int		ft_nbln(long long int d, t_d_flags flg)
 	return (len);
 }
 
-int		ft_pf_putnbr(long long int n, t_d_flags flg)
+int		ft_pf_putnbr(long long int n, t_flags flg)
 {
 	long long int			temp;
 	long long int			counter;
@@ -56,7 +56,7 @@ int		ft_pf_putnbr(long long int n, t_d_flags flg)
 	return (count);
 }
 
-int		p_m_chk(t_d_flags *flg, long long int d)
+int		p_m_chk(t_flags *flg, long long int d)
 {
 	int ret;
 
@@ -80,7 +80,7 @@ int		p_m_chk(t_d_flags *flg, long long int d)
 	return (ret);
 }
 
-void	m_chk_c(t_d_flags flg, long long int d, int *ret)
+void	m_chk_c(t_flags flg, long long int d, int *ret)
 {
 	flg.wd -= (flg.flg_p == 1 || flg.flg_sp == 1 || d < 0) ? 1 : 0;
 	if (d < 0)
@@ -95,7 +95,7 @@ void	m_chk_c(t_d_flags flg, long long int d, int *ret)
 	*ret += ft_pf_putnbr(d, flg);
 }
 
-void	m_chk(t_d_flags flg, long long int d, int *ret)
+void	m_chk(t_flags flg, long long int d, int *ret)
 {
 	if (flg.flg_n == 1)
 	{

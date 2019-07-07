@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 11:29:28 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/05 15:34:13 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/07 13:15:31 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ static long long			assign_d(int flag_d, va_list ap)
 	return (d);
 }
 
-static t_d_flags	chck_flags(const char *frm, int *i)
+static t_flags	chck_flags(const char *frm, int *i)
 {
-	t_d_flags	flags;
+	t_flags	flags;
 
-	flags = init_d_flags();
+	flags = init_flags();
 	while (frm[*i] != 'd' && frm[*i] != '.')
 	{
 		if (frm[*i] >= '1' && frm[*i] <= '9')
@@ -80,7 +80,7 @@ static t_d_flags	chck_flags(const char *frm, int *i)
 	return (flags);
 }
 
-static void			wdth_prc(const char *frm, int *i, t_d_flags *flags)
+static void			wdth_prc(const char *frm, int *i, t_flags *flags)
 {
 	while (frm[*i] != 'h' && frm[*i] != 'l' && frm[*i] != 'd' && frm[*i])
 	{
@@ -104,7 +104,7 @@ static void			wdth_prc(const char *frm, int *i, t_d_flags *flags)
 void				d_conv(const char *frm, int *i, va_list ap, int *ret)
 {
 	long long int	d;
-	t_d_flags		flags;
+	t_flags		flags;
 	int				flag_d;
 
 	flag_d = check_h_l(frm, i);

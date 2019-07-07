@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 11:42:52 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/05 15:12:20 by jbouazao         ###   ########.fr       */
+/*   Updated: 2019/07/07 13:08:51 by jbouazao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ t_flags_struct	get_struct_var(void)
 	return (g_struct_var);
 }
 
-t_d_flags		init_d_flags(void)
+t_flags		init_flags(void)
 {
-	t_d_flags	flags;
+	t_flags	flags;
 
 	flags.flg_p = 0;
 	flags.flg_n = 0;
@@ -75,5 +75,6 @@ t_d_flags		init_d_flags(void)
 	flags.wd = 0;
 	flags.pr = 0;
 	flags.dot = 0;
+	flags.hsh = 0;
 	return (flags);
 }
