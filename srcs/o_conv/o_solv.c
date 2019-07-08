@@ -6,11 +6,30 @@
 /*   By: oelbelam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 17:46:02 by oelbelam          #+#    #+#             */
-/*   Updated: 2019/07/07 21:35:19 by oelbelam         ###   ########.fr       */
+/*   Updated: 2019/07/08 12:22:01 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
+
+static int			ft_putstr_o(const char *s, t_flags flag)
+{
+	int	count;
+
+	if (flag.hsh == 0 && flag.dot == 1 && flag.pr == 0 && (s[0] == '0' && s[1] == '\0') && flag.wd != 0)
+	{
+		write(1, " ", 1);
+		return (1);
+	}
+	count = 0;
+	while (*s)
+	{
+		count += write(1, s, 1);
+		s++;
+	}
+	return (count);
+}
+
 
 int		ft_nbln_o(unsigned long long int d, t_flags flg)
 {
@@ -59,35 +78,35 @@ void		o_solv(t_flags flg, unsigned long long o, int *ret)
 {
 	if (flg.flg_n == 1)
 	{
-		if (flg.hsh == 1)
+		if (flg.hsh == 1 && o != 0)
 		{
-			*ret = write (1, "0", 1);
+			*ret += write (1, "0", 1);
 			flg.pr -= 1;
 		}
-		*ret += print_0(flg.pr - ft_nbln_o(ft_nbr_oct(o), flg));
-		*ret += ft_pf_putnbr_o(ft_nbr_oct(o), flg);
-		*ret += print_spaces((flg.pr > ft_nbln_o(ft_nbr_oct(o), flg)) ?
-				(flg.wd - flg.pr) : (flg.wd - ft_nbln_o(ft_nbr_oct(o), flg)));
+		*ret += print_0(flg.pr - (int)ft_strlen(ft_nbr_oct(o)));
+		*ret += ft_putstr_o(ft_nbr_oct(o), flg);
+		*ret += print_spaces((flg.pr > (int)ft_strlen(ft_nbr_oct(o))) ?
+					(flg.wd - flg.pr) : (flg.wd - (int)ft_strlen(ft_nbr_oct(o))));
 	}
 	else if (flg.flg_0 == 1 && flg.dot == 0)
 	{
-		*ret += print_0(flg.wd - ft_nbln_o(ft_nbr_oct(o), flg));
-		*ret += ft_pf_putnbr_o(ft_nbr_oct(o), flg);
+		*ret += print_0(flg.wd - (int)ft_strlen(ft_nbr_oct(o)));
+		*ret += ft_putstr_o(ft_nbr_oct(o), flg);
 	}
 	else if (flg.hsh == 1 && o != 0)
 	{
-		*ret += print_spaces((flg.pr > ft_nbln_o(ft_nbr_oct(o), flg)) ?
-				(flg.wd - flg.pr - 1) :
-				(flg.wd - ft_nbln_o(ft_nbr_oct(o), flg) - 1));
+		*ret += print_spaces((flg.pr > (int)ft_strlen(ft_nbr_oct(o))) ?
+			(flg.wd - flg.pr - 1) :
+			(flg.wd - (int)ft_strlen(ft_nbr_oct(o)) - 1));
 		*ret += write(1, "0", 1);
-		ft_pf_putnbr_o(ft_nbr_oct(o), flg);
+		*ret += ft_putstr_o(ft_nbr_oct(o), flg);
 	}
 	else
 	{
-		*ret += print_spaces((flg.pr > ft_nbln_o(ft_nbr_oct(o), flg) ? 
-					(flg.wd - flg.pr) : 
-					(flg.wd - ft_nbln_o(ft_nbr_oct(o), flg)) + 1));
-		*ret += print_0(flg.pr - ft_nbln_o(ft_nbr_oct(o), flg));
-		*ret += ft_pf_putnbr_o(ft_nbr_oct(o), flg);
+		*ret += print_spaces((flg.pr > (int)ft_strlen(ft_nbr_oct(o)) ? 
+				(flg.wd - flg.pr) : 
+				(flg.wd - (int)ft_strlen(ft_nbr_oct(o)))));
+		*ret += print_0(flg.pr - (int)ft_strlen((ft_nbr_oct(o))));
+		*ret += ft_putstr_o(ft_nbr_oct(o), flg);
 	}
 }

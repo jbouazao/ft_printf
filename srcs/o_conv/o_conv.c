@@ -6,7 +6,7 @@
 /*   By: oelbelam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 10:22:55 by oelbelam          #+#    #+#             */
-/*   Updated: 2019/07/07 22:38:07 by oelbelam         ###   ########.fr       */
+/*   Updated: 2019/07/08 11:21:06 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void			wdth_prc_o(const char *frm, int *i, t_flags *flags)
 		if (frm[*i] >= '1' && frm[*i] <= '9')
 		{
 			flags->wd = ft_atoi(&frm[*i]);
-			while (frm[*i] != '.' && frm[*i] != 'd')
+			while (frm[*i] != '.' && frm[*i] != 'o')
 				(*i)++;
 		}
 		if (frm[*i] == '.')
@@ -95,8 +95,6 @@ static void			wdth_prc_o(const char *frm, int *i, t_flags *flags)
 			flags->pr = ft_atoi(&frm[(*i) + 1]);
 			break ;
 		}
-		else
-			(*i)++;
 	}
 	while (frm[*i] != 'o')
 		(*i)++;

@@ -6,7 +6,7 @@
 /*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 13:01:34 by jbouazao          #+#    #+#             */
-/*   Updated: 2019/07/07 22:28:20 by oelbelam         ###   ########.fr       */
+/*   Updated: 2019/07/08 11:30:58 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_flags			init_flags(void);
 void			d_conv(const char *frm, int *i, va_list ap, int *ret);
 int				print_0(int wdth);
 void			m_chk(t_flags flg, long long int d, int *ret);
-unsigned long long				ft_nbr_oct(unsigned long long nbr);
+char			*ft_nbr_oct(unsigned long long nbr);
 int				ft_pf_putnbr_o(unsigned long long n, t_flags flg);
 void			o_solv(t_flags flg, unsigned long long o, int *ret);
 
